@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { sortBy } from 'lodash'
 
 import { type HeroListResponse } from '~/types/dota'
 
@@ -15,12 +16,14 @@ export function useHeroes() {
 
       const json = (await response.json()) as HeroListResponse
 
-      return json.result.data.heroes.map((hero) => ({
+      const heroes = sortBy(json.result.data.heroes, 'name_english_loc')
+
+      return heroes.map((hero) => ({
         attribute: getAttribute(hero.primary_attr),
         complexity: getComplexity(hero.complexity),
         id: hero.id,
         name: hero.name_loc,
-        slug: hero.name,
+        slug: hero.name.substring(14),
       }))
     },
     queryKey: ['heroes', language],
@@ -33,7 +36,7 @@ export function useHeroes() {
   }
 }
 
-function getAttribute(
+export function getAttribute(
   name: HeroListResponse['result']['data']['heroes'][number]['primary_attr'],
 ) {
   switch (name) {
@@ -51,7 +54,7 @@ function getAttribute(
   }
 }
 
-function getComplexity(
+export function getComplexity(
   name: HeroListResponse['result']['data']['heroes'][number]['complexity'],
 ) {
   switch (name) {

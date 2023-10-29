@@ -4,6 +4,7 @@ const radix = require('@radix-ui/colors')
 module.exports = {
   theme: {
     borderRadius: {
+      0: '0px',
       1: '3px',
       2: '4px',
       3: '6px',
@@ -14,6 +15,7 @@ module.exports = {
     colors: {
       ...radix.grayDark,
       ...radix.tomatoDark,
+      ...radix.cyanDark,
     },
     fontFamily: {
       'body-bold': ['radiance-bold'],
@@ -35,6 +37,7 @@ module.exports = {
       9: ['60px', '60px'],
     },
     spacing: {
+      0: '0px',
       1: '4px',
       2: '8px',
       3: '12px',

@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import {
   Pressable as RNPressable,
   type PressableProps,
@@ -26,55 +27,60 @@ type Props = Pick<
 
 const PressableAnimated = Animated.createAnimatedComponent(RNPressable)
 
-export function Pressable({
-  children,
-  disabled,
-  hitSlop,
-  onLayout,
-  onLongPress,
-  onPress,
-  onPressIn,
-  onPressOut,
-  style,
-}: Props) {
-  const opacity = useSharedValue(1)
+export const Pressable = forwardRef<typeof PressableAnimated, Props>(
+  (
+    {
+      children,
+      disabled,
+      hitSlop,
+      onLayout,
+      onLongPress,
+      onPress,
+      onPressIn,
+      onPressOut,
+      style,
+    },
+    ref,
+  ) => {
+    const opacity = useSharedValue(1)
 
-  const fadeIn = () => {
-    opacity.value = withTiming(0.5, {
-      duration: 100,
-    })
-  }
+    const fadeIn = () => {
+      opacity.value = withTiming(0.5, {
+        duration: 100,
+      })
+    }
 
-  const fadeOut = () => {
-    opacity.value = withTiming(1, {
-      duration: 100,
-    })
-  }
+    const fadeOut = () => {
+      opacity.value = withTiming(1, {
+        duration: 100,
+      })
+    }
 
-  const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-  }))
+    const animatedStyle = useAnimatedStyle(() => ({
+      opacity: opacity.value,
+    }))
 
-  return (
-    <PressableAnimated
-      disabled={disabled}
-      hitSlop={hitSlop}
-      onLongPress={onLongPress}
-      onLayout={onLayout}
-      onPress={onPress}
-      onPressIn={(event) => {
-        onPressIn?.(event)
+    return (
+      <PressableAnimated
+        disabled={disabled}
+        hitSlop={hitSlop}
+        onLongPress={onLongPress}
+        onLayout={onLayout}
+        onPress={onPress}
+        onPressIn={(event) => {
+          onPressIn?.(event)
 
-        fadeIn()
-      }}
-      onPressOut={(event) => {
-        onPressOut?.(event)
+          fadeIn()
+        }}
+        onPressOut={(event) => {
+          onPressOut?.(event)
 
-        fadeOut()
-      }}
-      style={[style, animatedStyle]}
-    >
-      {children}
-    </PressableAnimated>
-  )
-}
+          fadeOut()
+        }}
+        style={[style, animatedStyle]}
+      >
+        {children}
+      </PressableAnimated>
+    )
+  },
+)

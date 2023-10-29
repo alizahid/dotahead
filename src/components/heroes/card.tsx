@@ -1,10 +1,12 @@
 import { Image, ImageBackground } from 'expo-image'
+import { Link } from 'expo-router'
 import { useState } from 'react'
 import { type StyleProp, View, type ViewStyle } from 'react-native'
 
 import background from '~/assets/images/card-background.jpg'
 import { type useHeroes } from '~/hooks/heroes'
-import { tw } from '~/styles/tailwind'
+import { getAttributeImage, getHeroImage } from '~/lib/image'
+import { getPx, tw } from '~/styles/tailwind'
 
 import { Pressable } from '../common/pressable'
 import { Text } from '../common/text'
@@ -20,35 +22,29 @@ export function HeroCard({ hero, style }: Props) {
   const [width, setWidth] = useState(0)
 
   return (
-    <Pressable
-      onLayout={(event) => setWidth(event.nativeEvent.layout.width)}
-      style={[tw`flex-1`, style]}
-    >
-      <ImageBackground
-        style={tw`overflow-hidden rounded-4`}
-        source={background}
-      >
-        <Image
-          style={{
-            height: width * ratio,
-            width,
-          }}
-          source={`https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${hero.slug.substring(
-            14,
-          )}.png`}
-        />
-
-        <View style={tw`rounded-9 absolute m-2 bg-gray1`}>
+    <Link asChild href={`/heroes/${hero.id}`} style={[tw`flex-1`, style]}>
+      <Pressable onLayout={(event) => setWidth(event.nativeEvent.layout.width)}>
+        <ImageBackground
+          style={tw`overflow-hidden rounded-4`}
+          source={background}
+        >
           <Image
-            style={tw`h-5 w-5`}
-            source={`https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/hero_${hero.attribute}.png`}
+            style={tw`w-[${getPx(width)}] h-[${getPx(width * ratio)}]`}
+            source={getHeroImage(hero.slug)}
           />
-        </View>
 
-        <Text style={tw`mx-2 my-1`} weight="semibold">
-          {hero.name}
-        </Text>
-      </ImageBackground>
-    </Pressable>
+          <View style={tw`rounded-9 absolute m-2 bg-gray1`}>
+            <Image
+              style={tw`h-5 w-5`}
+              source={getAttributeImage(hero.attribute)}
+            />
+          </View>
+
+          <Text style={tw`mx-2 my-1`} weight="semibold">
+            {hero.name}
+          </Text>
+        </ImageBackground>
+      </Pressable>
+    </Link>
   )
 }

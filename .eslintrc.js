@@ -13,7 +13,12 @@ module.exports = {
       },
     },
   ],
-  plugins: ['sort-keys-fix', 'sort-destructure-keys', 'simple-import-sort'],
+  plugins: [
+    'sort-keys-fix',
+    'sort-destructure-keys',
+    'simple-import-sort',
+    'typescript-sort-keys',
+  ],
   root: true,
   rules: {
     '@typescript-eslint/array-type': [
@@ -35,5 +40,6 @@ module.exports = {
     'simple-import-sort/imports': 'error',
     'sort-destructure-keys/sort-destructure-keys': 'error',
     'sort-keys-fix/sort-keys-fix': 'error',
+    'typescript-sort-keys/interface': 'error',
   },
 }

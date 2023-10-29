@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router'
 
-import { Header } from '~/components/navigation/stack-header'
+import { Header } from '~/components/navigation/header'
 import { TabBar } from '~/components/navigation/tab-bar'
 
 export default function TabLayout() {

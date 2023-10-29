@@ -4,6 +4,7 @@ import { SplashScreen, Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { useEffect } from 'react'
 
+import { Header } from '~/components/navigation/header'
 import { QueryProvider } from '~/components/providers/query'
 import { theme } from '~/styles/theme'
 
@@ -13,12 +14,12 @@ SplashScreen.preventAutoHideAsync()
 
 export default function Layout() {
   const [loaded, error] = useFonts({
-    'radiance-bold': require('../assets/fonts/radiance-bold.ttf'),
-    'radiance-regular': require('../assets/fonts/radiance-regular.ttf'),
-    'radiance-semibold': require('../assets/fonts/radiance-semibold.ttf'),
-    'reaver-bold': require('../assets/fonts/reaver-bold.ttf'),
-    'reaver-regular': require('../assets/fonts/reaver-regular.ttf'),
-    'reaver-semibold': require('../assets/fonts/reaver-semibold.ttf'),
+    'radiance-bold': require('../assets/fonts/radiance-bold.otf'),
+    'radiance-regular': require('../assets/fonts/radiance-regular.otf'),
+    'radiance-semibold': require('../assets/fonts/radiance-semibold.otf'),
+    'reaver-bold': require('../assets/fonts/reaver-bold.otf'),
+    'reaver-regular': require('../assets/fonts/reaver-regular.otf'),
+    'reaver-semibold': require('../assets/fonts/reaver-semibold.otf'),
   })
 
   useEffect(() => {
@@ -46,11 +47,22 @@ function Navigation() {
       <StatusBar style="light" />
 
       <ThemeProvider value={theme}>
-        <Stack>
+        <Stack
+          screenOptions={{
+            header: (props) => <Header {...props} />,
+          }}
+        >
           <Stack.Screen
             name="(tabs)"
             options={{
               headerShown: false,
+            }}
+          />
+
+          <Stack.Screen
+            name="heroes/[id]"
+            options={{
+              title: 'Loading',
             }}
           />
         </Stack>
