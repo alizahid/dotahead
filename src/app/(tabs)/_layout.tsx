@@ -1,19 +1,33 @@
 import { Tabs } from 'expo-router'
+import { Header } from '~/components/navigation/stack-header'
+import { TabBar } from '~/components/navigation/tab-bar'
 
 export default function TabLayout() {
   return (
-    <Tabs>
+    <Tabs
+      tabBar={(props) => <TabBar {...props} />}
+      screenOptions={{
+        header: (props) => <Header {...props} />,
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
+          title: 'Heroes',
         }}
       />
 
       <Tabs.Screen
-        name="two"
+        name="items"
         options={{
-          title: 'Tab Two',
+          title: 'Items',
+        }}
+      />
+
+      <Tabs.Screen
+        name="more"
+        options={{
+          title: 'More',
         }}
       />
     </Tabs>

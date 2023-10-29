@@ -3,7 +3,7 @@ import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persi
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
 import { ReactNode } from 'react'
 
-import { queryClient } from '../lib/query'
+import { queryClient } from '../../lib/query'
 
 const persister = createAsyncStoragePersister({
   storage: AsyncStorage,

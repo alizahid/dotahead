@@ -1,7 +1,11 @@
+import { ThemeProvider } from '@react-navigation/native'
 import { useFonts } from 'expo-font'
 import { SplashScreen, Stack } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 import { useEffect } from 'react'
-import { QueryProvider } from '~/components/query'
+
+import { QueryProvider } from '~/components/providers/query'
+import { theme } from '~/styles/theme'
 
 export { ErrorBoundary } from 'expo-router'
 
@@ -39,14 +43,18 @@ export default function Layout() {
 function Navigation() {
   return (
     <QueryProvider>
-      <Stack>
-        <Stack.Screen
-          name="(tabs)"
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack>
+      <StatusBar style="light" />
+
+      <ThemeProvider value={theme}>
+        <Stack>
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              headerShown: false,
+            }}
+          />
+        </Stack>
+      </ThemeProvider>
     </QueryProvider>
   )
 }
