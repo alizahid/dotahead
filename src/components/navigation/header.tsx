@@ -13,7 +13,7 @@ import { Text } from '../common/text'
 
 type Props = BottomTabHeaderProps | NativeStackHeaderProps
 
-export function Header({ navigation, options, route }: Props) {
+export function Header({ navigation, options, ...props }: Props) {
   const insets = useSafeAreaInsets()
 
   return (
@@ -32,7 +32,7 @@ export function Header({ navigation, options, route }: Props) {
           {options.title}
         </Text>
 
-        {navigation.canGoBack() && (
+        {'back' in props && (
           <Pressable
             style={tw`h-7 w-7 items-center justify-center`}
             onPress={() => navigation.goBack()}
