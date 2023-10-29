@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister'
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
-import { ReactNode } from 'react'
+import { type ReactNode } from 'react'
 
 import { queryClient } from '../../lib/query'
 

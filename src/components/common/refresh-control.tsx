@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import { RefreshControl as RNRefreshControl } from 'react-native'
+
 import { getColor } from '~/styles/tailwind'
 
 type Props = {

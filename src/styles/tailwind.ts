@@ -1,4 +1,4 @@
-import radix from '@radix-ui/colors'
+import type radix from '@radix-ui/colors'
 import { create } from 'twrnc'
 
 export type TailwindColor =

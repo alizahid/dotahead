@@ -1,6 +1,7 @@
-import { ReactNode } from 'react'
-import { Text as RNText, StyleProp, TextStyle } from 'react-native'
-import { TailwindColor, TailwindSpace, tw } from '~/styles/tailwind'
+import { type ReactNode } from 'react'
+import { type StyleProp, Text as RNText, type TextStyle } from 'react-native'
+
+import { type TailwindColor, type TailwindSpace, tw } from '~/styles/tailwind'
 
 type Props = {
   align?: 'left' | 'center' | 'right'

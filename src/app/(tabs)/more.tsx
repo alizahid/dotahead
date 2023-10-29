@@ -1,5 +1,4 @@
 import { Page } from '~/components/common/page'
-
 import { Text } from '~/components/common/text'
 import { tw } from '~/styles/tailwind'
 

@@ -19,17 +19,17 @@ export default function Screen() {
     <Page>
       <FlashList
         numColumns={2}
-        ListEmptyComponent={<Spinner />}
+        ListEmptyComponent={<Spinner style={tw`m-4`} />}
         data={heroes}
         refreshControl={<RefreshControl onRefresh={refetch} />}
         contentContainerStyle={tw`py-2`}
         indicatorStyle="white"
         estimatedItemSize={140}
-        renderItem={({ item, index }) => (
+        renderItem={({ index, item }) => (
           <HeroCard
             style={tw.style(
               'my-2',
-              index % 2 === 0 ? 'ml-4 mr-2' : 'ml-2 mr-4'
+              index % 2 === 0 ? 'ml-4 mr-2' : 'ml-2 mr-4',
             )}
             hero={item}
           />

@@ -1,27 +1,29 @@
 import { useQuery } from '@tanstack/react-query'
+
+import { type HeroListResponse } from '~/types/dota'
+
 import { useLanguage } from './language'
-import { HeroListResponse } from '~/types/dota'
 
 export function useHeroes() {
   const { language } = useLanguage()
 
   const { data, isLoading, refetch } = useQuery({
-    queryKey: ['heroes', language],
     async queryFn() {
       const response = await fetch(
-        `https://www.dota2.com/datafeed/herolist?language=${language}`
+        `https://www.dota2.com/datafeed/herolist?language=${language}`,
       )
 
       const json = (await response.json()) as HeroListResponse
 
       return json.result.data.heroes.map((hero) => ({
-        name: hero.name_loc,
-        id: hero.id,
-        slug: hero.name,
-        complexity: getComplexity(hero.complexity),
         attribute: getAttribute(hero.primary_attr),
+        complexity: getComplexity(hero.complexity),
+        id: hero.id,
+        name: hero.name_loc,
+        slug: hero.name,
       }))
     },
+    queryKey: ['heroes', language],
   })
 
   return {
@@ -32,7 +34,7 @@ export function useHeroes() {
 }
 
 function getAttribute(
-  name: HeroListResponse['result']['data']['heroes'][number]['primary_attr']
+  name: HeroListResponse['result']['data']['heroes'][number]['primary_attr'],
 ) {
   switch (name) {
     case 0:
@@ -50,7 +52,7 @@ function getAttribute(
 }
 
 function getComplexity(
-  name: HeroListResponse['result']['data']['heroes'][number]['complexity']
+  name: HeroListResponse['result']['data']['heroes'][number]['complexity'],
 ) {
   switch (name) {
     case 1:

@@ -1,4 +1,4 @@
-import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
+import { type BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import { ImageBackground } from 'expo-image'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
@@ -8,13 +8,13 @@ import { getColor, getSpacePx, tw } from '~/styles/tailwind'
 import { Pressable } from '../common/pressable'
 import { Text } from '../common/text'
 
-export function TabBar({ descriptors, state, navigation }: BottomTabBarProps) {
+export function TabBar({ descriptors, navigation, state }: BottomTabBarProps) {
   const insets = useSafeAreaInsets()
 
   return (
     <ImageBackground
       source={background}
-      style={tw`flex-row gap-4 justify-center w-full`}
+      style={tw`w-full flex-row justify-center gap-4`}
     >
       {state.routes.map((route, index) => (
         <Pressable

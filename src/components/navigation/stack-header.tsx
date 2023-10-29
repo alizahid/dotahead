@@ -1,4 +1,4 @@
-import { BottomTabHeaderProps } from '@react-navigation/bottom-tabs'
+import { type BottomTabHeaderProps } from '@react-navigation/bottom-tabs'
 import { ImageBackground } from 'expo-image'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
@@ -7,7 +7,7 @@ import { tw } from '~/styles/tailwind'
 
 import { Text } from '../common/text'
 
-export function Header({ options, navigation }: BottomTabHeaderProps) {
+export function Header({ navigation, options }: BottomTabHeaderProps) {
   const insets = useSafeAreaInsets()
 
   return (

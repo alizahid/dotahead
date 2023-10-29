@@ -1,9 +1,9 @@
 import { Image, ImageBackground } from 'expo-image'
 import { useState } from 'react'
-import { StyleProp, View, ViewStyle } from 'react-native'
+import { type StyleProp, View, type ViewStyle } from 'react-native'
 
 import background from '~/assets/images/card-background.jpg'
-import { useHeroes } from '~/hooks/heroes'
+import { type useHeroes } from '~/hooks/heroes'
 import { tw } from '~/styles/tailwind'
 
 import { Pressable } from '../common/pressable'
@@ -25,7 +25,7 @@ export function HeroCard({ hero, style }: Props) {
       style={[tw`flex-1`, style]}
     >
       <ImageBackground
-        style={tw`rounded-4 overflow-hidden`}
+        style={tw`overflow-hidden rounded-4`}
         source={background}
       >
         <Image
@@ -34,11 +34,11 @@ export function HeroCard({ hero, style }: Props) {
             width,
           }}
           source={`https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${hero.slug.substring(
-            14
+            14,
           )}.png`}
         />
 
-        <View style={tw`absolute m-2 bg-gray1 rounded-9`}>
+        <View style={tw`rounded-9 absolute m-2 bg-gray1`}>
           <Image
             style={tw`h-5 w-5`}
             source={`https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/hero_${hero.attribute}.png`}
