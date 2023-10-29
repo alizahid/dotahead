@@ -4,8 +4,8 @@ import { tw } from '~/styles/tailwind'
 
 export default function Screen() {
   return (
-    <Page style={tw`p-4`}>
-      <Text>Items</Text>
+    <Page style={tw`items-center justify-center p-4`}>
+      <Text>Coming soon!</Text>
     </Page>
   )
 }
