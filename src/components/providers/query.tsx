@@ -32,19 +32,3 @@ export function QueryProvider({ children }: Props) {
     </PersistQueryClientProvider>
   )
 }
-
-// https://www.dota2.com/datafeed/herolist?language=english
-// https://www.dota2.com/datafeed/herodata?language=english&hero_id=73
-
-/// https://www.dota2.com/datafeed/itemlist?language=english
-/// https://www.dota2.com/datafeed/itemdata?language=english&item_id=600
-
-// react-native-render-html
-
-// https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/hero_universal.png
-// https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/hero_strength.png
-
-// https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/venomancer.png
-
-// https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/bane_enfeeble.png
-// https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/abilities/alchemist/alchemist_chemical_rage.mp4
