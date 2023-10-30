@@ -26,6 +26,13 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
+        name="patches"
+        options={{
+          title: 'Patches',
+        }}
+      />
+
+      <Tabs.Screen
         name="more"
         options={{
           title: 'More',
