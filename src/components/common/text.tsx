@@ -31,7 +31,10 @@ export function Text({
       selectable={selectable}
       numberOfLines={lines}
       style={[
-        tw`font-${variant}-${weight} text-${size} text-${color} text-${align}`,
+        tw.style(
+          `font-${variant}-${weight} text-${size} text-${color} text-${align}`,
+          variant === 'display' && 'tracking-wider',
+        ),
         style,
       ]}
     >
