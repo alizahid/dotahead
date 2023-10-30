@@ -40,7 +40,7 @@ export function getFilterImage(
   name: 'complexity' | (typeof FilterAttributes)[number],
 ) {
   if (name === 'complexity') {
-    return '${base}/images/dota_react/herogrid/filter-diamond.png'
+    return `${base}/images/dota_react/herogrid/filter-diamond.png`
   }
 
   const id = name.slice(0, 3)

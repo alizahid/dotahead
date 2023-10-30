@@ -71,7 +71,7 @@ export function HeroFilters({ style }: Props) {
 
         <View style={tw`flex-row items-center`}>
           <Text style={tw`mr-4`} weight="semibold">
-            Attribute
+            Complexity
           </Text>
 
           {range(3).map((index) => {
