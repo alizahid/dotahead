@@ -3,10 +3,15 @@ import { sortBy } from 'lodash'
 
 import { type HeroListResponse } from '~/types/dota'
 
+import { type Filters, filtersQueryKey } from './filters'
 import { useLanguage } from './language'
 
 export function useHeroes() {
   const { language } = useLanguage()
+
+  const { data: filters } = useQuery<Filters>({
+    queryKey: [filtersQueryKey],
+  })
 
   const { data, isLoading, refetch } = useQuery({
     async queryFn() {
@@ -29,8 +34,24 @@ export function useHeroes() {
     queryKey: ['heroes', language],
   })
 
+  let heroes = data
+
+  if (filters?.name) {
+    heroes = heroes?.filter((hero) =>
+      hero.name.toLocaleLowerCase().includes(filters.name!),
+    )
+  }
+
+  if (filters?.attribute) {
+    heroes = heroes?.filter((hero) => hero.attribute === filters.attribute)
+  }
+
+  if (filters?.complexity) {
+    heroes = heroes?.filter((hero) => hero.complexity === filters.complexity)
+  }
+
   return {
-    heroes: data,
+    heroes,
     loading: isLoading,
     refetch,
   }

@@ -9,20 +9,31 @@ import { Text } from './text'
 type Props = {
   children: ReactNode
   onPress?: () => void
-
   style?: StyleProp<ViewStyle>
+  variant?: 'primary' | 'accent'
 }
 
-export function Button({ children, onPress, style }: Props) {
+export function Button({
+  children,
+  onPress,
+  style,
+  variant = 'primary',
+}: Props) {
   return (
     <Pressable
       style={[
-        tw`h-6 items-center justify-center rounded-3 bg-cyan9 px-3`,
+        tw.style(
+          'h-6 items-center justify-center rounded-3 px-3',
+          variant === 'primary' && 'bg-tomato9',
+          variant === 'accent' && 'bg-cyan9',
+        ),
         style,
       ]}
       onPress={onPress}
     >
-      <Text weight="semibold">{children}</Text>
+      <Text leading="tight" weight="semibold">
+        {children}
+      </Text>
     </Pressable>
   )
 }

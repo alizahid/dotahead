@@ -1,3 +1,4 @@
+import { type FilterAttributes } from '~/hooks/filters'
 import { type getAttackType } from '~/hooks/hero'
 import { type getAttribute } from '~/hooks/heroes'
 
@@ -31,4 +32,16 @@ export function getAbilityUpgradeImage(type: 'shard' | 'scepter') {
 
 export function getItemImage(slug: string) {
   return `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/ultimate_scepter.png`
+}
+
+export function getFilterImage(
+  name: 'complexity' | (typeof FilterAttributes)[number],
+) {
+  if (name === 'complexity') {
+    return 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-diamond.png'
+  }
+
+  const id = name.slice(0, 3)
+
+  return `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/herogrid/filter-${id}-active.png`
 }

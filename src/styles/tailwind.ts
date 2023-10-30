@@ -6,6 +6,8 @@ export type TailwindColor =
   | keyof typeof radix.cyanDark
   | keyof typeof radix.grayDark
   | keyof typeof radix.tomatoDark
+  | keyof typeof radix.redDark
+  | keyof typeof radix.greenDark
 
 export type TailwindSpace = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 

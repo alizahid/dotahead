@@ -16,6 +16,8 @@ module.exports = {
       ...radix.grayDark,
       ...radix.tomatoDark,
       ...radix.cyanDark,
+      ...radix.redDark,
+      ...radix.greenDark,
     },
     fontFamily: {
       'body-bold': ['radiance-bold'],
