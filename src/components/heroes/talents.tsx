@@ -29,9 +29,7 @@ export function HeroTalents({ hero, style }: Props) {
           <View
             style={tw`h-6 w-6 items-center justify-center rounded-6 bg-gray1`}
           >
-            <Text color="tomato11" leading="tight">
-              {labels[index]}
-            </Text>
+            <Text color="tomato11">{labels[index]}</Text>
           </View>
 
           <Text lines={2} style={tw`flex-1`} size={2}>

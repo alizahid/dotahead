@@ -14,7 +14,7 @@ export function HeaderButton({ icon, onPress }: Props) {
       style={tw`h-7 w-7 items-center justify-center`}
       onPress={onPress}
     >
-      <Icon name={icon} />
+      <Icon name={icon} size={5} />
     </Pressable>
   )
 }

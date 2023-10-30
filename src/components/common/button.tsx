@@ -31,9 +31,7 @@ export function Button({
       ]}
       onPress={onPress}
     >
-      <Text leading="tight" weight="semibold">
-        {children}
-      </Text>
+      <Text weight="semibold">{children}</Text>
     </Pressable>
   )
 }
