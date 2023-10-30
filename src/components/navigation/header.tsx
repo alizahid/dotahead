@@ -1,11 +1,11 @@
 import { type BottomTabHeaderProps } from '@react-navigation/bottom-tabs'
 import { type NativeStackHeaderProps } from '@react-navigation/native-stack'
-import { ImageBackground } from 'expo-image'
+import { Image } from 'expo-image'
 import { View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import background from '~/assets/images/nav-background.jpg'
-import { getSpacePx, tw } from '~/styles/tailwind'
+import { getPx, tw } from '~/styles/tailwind'
 
 import { Icon } from '../common/icon'
 import { Pressable } from '../common/pressable'
@@ -17,11 +17,14 @@ export function Header({ navigation, options, ...props }: Props) {
   const insets = useSafeAreaInsets()
 
   return (
-    <ImageBackground
-      source={background}
-      style={tw`pt-[${getSpacePx(0, insets.top)}]`}
-    >
-      <View style={tw`h-7 w-full flex-row items-center`}>
+    <View style={tw`bg-gray1 pt-[${getPx(insets.top)}]`}>
+      <Image
+        pointerEvents="none"
+        style={tw`absolute inset-0`}
+        source={background}
+      />
+
+      <View style={tw`h-7 flex-row items-center`}>
         <Text
           align="center"
           variant="display"
@@ -41,6 +44,6 @@ export function Header({ navigation, options, ...props }: Props) {
           </Pressable>
         )}
       </View>
-    </ImageBackground>
+    </View>
   )
 }
