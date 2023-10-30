@@ -7,14 +7,15 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import background from '~/assets/images/nav-background.jpg'
 import { getPx, tw } from '~/styles/tailwind'
 
-import { Icon } from '../common/icon'
-import { Pressable } from '../common/pressable'
 import { Text } from '../common/text'
+import { HeaderButton } from './button'
 
 type Props = BottomTabHeaderProps | NativeStackHeaderProps
 
 export function Header({ navigation, options, ...props }: Props) {
   const insets = useSafeAreaInsets()
+
+  const back = 'back' in props
 
   return (
     <View style={tw`bg-gray1 pt-[${getPx(insets.top)}]`}>
@@ -24,25 +25,28 @@ export function Header({ navigation, options, ...props }: Props) {
         source={background}
       />
 
-      <View style={tw`h-7 flex-row items-center`}>
-        <Text
-          align="center"
-          variant="display"
-          size={2}
-          weight="bold"
-          style={tw`absolute w-full`}
-        >
-          {options.title}
-        </Text>
+      <View style={tw`h-7 items-center justify-center`}>
+        {options.headerLeft ?? back ? (
+          <View style={tw`absolute bottom-0 left-0 flex-row`}>
+            {back ? (
+              <HeaderButton icon="left" onPress={() => navigation.goBack()} />
+            ) : null}
 
-        {'back' in props && (
-          <Pressable
-            style={tw`h-7 w-7 items-center justify-center`}
-            onPress={() => navigation.goBack()}
-          >
-            <Icon name="left" size={5} />
-          </Pressable>
-        )}
+            {options.headerLeft?.({
+              canGoBack: navigation.canGoBack(),
+            })}
+          </View>
+        ) : null}
+
+        {options.title ? <Text weight="bold">{options.title}</Text> : null}
+
+        {options.headerRight ? (
+          <View style={tw`absolute bottom-0 right-0 flex-row`}>
+            {options.headerRight({
+              canGoBack: navigation.canGoBack(),
+            })}
+          </View>
+        ) : null}
       </View>
     </View>
   )
