@@ -21,21 +21,25 @@ export function Text({
   align = 'left',
   children,
   color = 'gray12',
-  leading = 'normal',
+  leading,
   lines,
   selectable,
   size = 3,
   style,
   variant = 'body',
   weight = 'regular',
-  tracking = variant === 'display' ? 'wider' : 'normal',
+  tracking = variant === 'display' ? 'wider' : undefined,
 }: Props) {
   return (
     <RNText
       selectable={selectable}
       numberOfLines={lines}
       style={[
-        tw`font-${variant}-${weight} text-${size} text-${color} text-${align} leading-${leading} tracking-${tracking}`,
+        tw.style(
+          `font-${variant}-${weight} text-${size} text-${color} text-${align}`,
+          leading && `leading-${leading}`,
+          tracking && `tracking-${tracking}`,
+        ),
         style,
       ]}
     >
