@@ -3,6 +3,7 @@
 ## Tech
 
 - Expo
+- Tailwind CSS
 - TypeScript
 - ESLint
 - Bun
