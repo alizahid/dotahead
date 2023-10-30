@@ -1,10 +1,5 @@
 import { forwardRef } from 'react'
-import {
-  Pressable as RNPressable,
-  type PressableProps,
-  type StyleProp,
-  type ViewStyle,
-} from 'react-native'
+import { Pressable as RNPressable, type PressableProps } from 'react-native'
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -18,12 +13,11 @@ type Props = Pick<
   | 'hitSlop'
   | 'onLayout'
   | 'onLongPress'
+  | 'style'
   | 'onPress'
   | 'onPressIn'
   | 'onPressOut'
-> & {
-  style?: StyleProp<ViewStyle>
-}
+>
 
 const PressableAnimated = Animated.createAnimatedComponent(RNPressable)
 

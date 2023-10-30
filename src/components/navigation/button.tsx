@@ -5,7 +5,6 @@ import { Pressable } from '../common/pressable'
 
 type Props = {
   icon: IconName
-
   onPress?: () => void
 }
 
